@@ -1,5 +1,18 @@
 # hardhat (development version)
 
+* New reversible outcome transformation contract. `outcome_log_transform()`
+  creates a log transform and `outcome_box_cox_transform()` creates a Box-Cox
+  power transform whose `lambda` is estimated from the training outcome.
+  `fit_outcome_transform()` estimates and freezes parameters from the training
+  outcome only, `mold_outcomes()` returns the transformed training target, and
+  `inverse_predictions()` back-transforms numeric and `quantile_pred`
+  predictions (preserving quantile levels) using the frozen transform.
+  Transforms are never re-estimated on new data, missing values and
+  out-of-domain values are handled explicitly, and fitted transforms are plain
+  lists that remain consistent after being reloaded from disk. Back-transformed
+  point predictions are documented as inverse transforms of the declared
+  predicted quantity, not unconditionally as original-scale expectations.
+
 * `delete_response()` now will also work with R >= 4.7, where `stats::delete.response()` removes the `"dataClasses"` entry of the response itself (#306).
 
 # hardhat 1.4.3

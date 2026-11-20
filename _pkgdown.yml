@@ -29,6 +29,16 @@ reference:
   - contains("spruce")
   - quantile_pred
 
+- title: Outcome transformations
+  contents:
+  - outcome-transform
+  - fit_outcome_transform
+  - apply_outcome_transform
+  - inverse_outcome_transform
+  - mold_outcomes
+  - inverse_predictions
+  - is_fitted_outcome_transform
+
 - title: Utility
   contents:
   - contains("model_")
