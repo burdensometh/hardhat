@@ -50,6 +50,7 @@ reference:
 - title: Blueprint
   contents:
   - contains("blueprint")
+  - tokenize_text
   - run_mold
   - run_forge
 

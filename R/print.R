@@ -2,6 +2,9 @@
 format.xy_blueprint <- function(x, ...) "XY"
 
 #' @export
+format.text_blueprint <- function(x, ...) "Text"
+
+#' @export
 format.recipe_blueprint <- function(x, ...) "Recipe"
 
 #' @export

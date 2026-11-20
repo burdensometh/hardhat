@@ -1,5 +1,9 @@
 # hardhat (development version)
 
+* Added a new text preprocessing blueprint, `default_text_blueprint()`, for turning character columns into sparse TF-IDF features. At `mold()` time the blueprint tokenizes the text, learns a vocabulary and document frequencies, and combines the resulting sparse TF-IDF columns with numeric auxiliary predictor columns. `forge()` reuses the frozen tokenizer, vocabulary, and IDF weights so unseen terms never create new columns. Missing (`NA`) and empty text are handled as distinct cases (both yield all-zero TF-IDF rows, with missing text reported in the `extras$missing_text` slot), and multiple text columns keep their source boundary through prefixed feature names. A custom `tokenizer` can be supplied, and `min_times`, `max_tokens`, `smooth_idf`, `prefix`, and `sep` control vocabulary learning and feature naming.
+
+* Added `tokenize_text()`, the default regex-based tokenizer used by `default_text_blueprint()`. It distinguishes missing text (`NULL` tokens) from empty text (zero tokens).
+
 * `delete_response()` now will also work with R >= 4.7, where `stats::delete.response()` removes the `"dataClasses"` entry of the response itself (#306).
 
 # hardhat 1.4.3

@@ -73,7 +73,11 @@ mold.data.frame <- function(x, y, ..., blueprint = NULL) {
     blueprint <- default_xy_blueprint()
   }
 
-  check_xy_blueprint(blueprint)
+  if (inherits(blueprint, "text_blueprint")) {
+    check_text_blueprint(blueprint)
+  } else {
+    check_xy_blueprint(blueprint)
+  }
 
   run_mold(blueprint, x = x, y = y)
 }
